@@ -1,0 +1,18 @@
+{
+  "name": "setbased/abc-session",
+  "description": "ABC-Framework: Session",
+  "keywords": [
+    "ABC-Framework",
+    "Session"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": ">=7.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SetBased\\Abc\\Session\\": "src/"
+    }
+  }
+}
