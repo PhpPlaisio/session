@@ -25,14 +25,6 @@ interface Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Returns the code of preferred language of the user of the current session.
-   *
-   * @return string
-   */
-  public function getLanCode();
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
    * Returns the ID of preferred language of the user of the current session.
    *
    * @return int
@@ -104,6 +96,14 @@ interface Session
    * @return void
    */
   public function save();
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * Changes the language of the current session.
+   *
+   * @param int $lanId The ID of the new language.
+   */
+  public function setLanId($lanId);
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
