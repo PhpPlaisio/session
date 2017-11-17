@@ -12,6 +12,8 @@ interface Session
    * Returns the ID of company of the current session.
    *
    * @return int
+   *
+   * @deprecated Use Abc::$companyResolver->getCmpId() instead.
    */
   public function getCmpId();
 
