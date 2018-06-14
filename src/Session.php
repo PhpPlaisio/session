@@ -1,5 +1,5 @@
 <?php
-//----------------------------------------------------------------------------------------------------------------------
+
 namespace SetBased\Abc\Session;
 
 /**
@@ -13,7 +13,7 @@ interface Session
    *
    * @return string
    */
-  public function getCsrfToken();
+  public function getCsrfToken(): string;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -21,7 +21,7 @@ interface Session
    *
    * @return int
    */
-  public function getLanId();
+  public function getLanId(): int;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -29,7 +29,7 @@ interface Session
    *
    * @return int
    */
-  public function getProId();
+  public function getProId(): int;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -37,7 +37,7 @@ interface Session
    *
    * @return int|null
    */
-  public function getSesId();
+  public function getSesId(): ?int;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -45,7 +45,7 @@ interface Session
    *
    * @return string
    */
-  public function getSessionToken();
+  public function getSessionToken(): string;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -53,7 +53,7 @@ interface Session
    *
    * @return int
    */
-  public function getUsrId();
+  public function getUsrId(): int;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -61,7 +61,7 @@ interface Session
    *
    * @return bool
    */
-  public function isAnonymous();
+  public function isAnonymous(): bool;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -71,7 +71,7 @@ interface Session
    *
    * @return void
    */
-  public function login($usrId);
+  public function login($usrId): void;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -79,7 +79,7 @@ interface Session
    *
    * @return void
    */
-  public function logout();
+  public function logout(): void;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -87,15 +87,17 @@ interface Session
    *
    * @return void
    */
-  public function save();
+  public function save(): void;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Changes the language of the current session.
    *
    * @param int $lanId The ID of the new language.
+   *
+   * @return void
    */
-  public function setLanId($lanId);
+  public function setLanId(int $lanId): void;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -103,7 +105,7 @@ interface Session
    *
    * @return void
    */
-  public function start();
+  public function start(): void;
 
   //--------------------------------------------------------------------------------------------------------------------
 }
