@@ -71,7 +71,7 @@ interface Session
    *
    * @return void
    */
-  public function login($usrId): void;
+  public function login(int $usrId): void;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
