@@ -28,6 +28,9 @@ interface Session
    * Deletes a named section of the session.
    *
    * @param string $name The name of the named section.
+   *
+   * @since 1.0.0
+   * @api
    */
   public function delNamedSession(string $name): void;
 
@@ -36,6 +39,9 @@ interface Session
    * Returns stateful double submit token to prevent CSRF attacks.
    *
    * @return string
+   *
+   * @since 1.0.0
+   * @api
    */
   public function getCsrfToken(): string;
 
@@ -44,6 +50,9 @@ interface Session
    * Returns the ID of preferred language of the user of the current session.
    *
    * @return int
+   *
+   * @since 1.0.0
+   * @api
    */
   public function getLanId(): int;
 
@@ -55,6 +64,9 @@ interface Session
    * @param int    $mode The locke mode.
    *
    * @return array
+   *
+   * @since 1.0.0
+   * @api
    */
   public function getNamedSection(string $name, int $mode): array;
 
@@ -63,6 +75,9 @@ interface Session
    * Returns the ID of the profile of the user of the current session.
    *
    * @return int
+   *
+   * @since 1.0.0
+   * @api
    */
   public function getProId(): int;
 
@@ -71,6 +86,9 @@ interface Session
    * Returns the ID of the current session.
    *
    * @return int|null
+   *
+   * @since 1.0.0
+   * @api
    */
   public function getSesId(): ?int;
 
@@ -79,6 +97,9 @@ interface Session
    * Returns the session token.
    *
    * @return string
+   *
+   * @since 1.0.0
+   * @api
    */
   public function getSessionToken(): string;
 
@@ -87,6 +108,9 @@ interface Session
    * Returns the ID of the user of the current session.
    *
    * @return int
+   *
+   * @since 1.0.0
+   * @api
    */
   public function getUsrId(): int;
 
@@ -95,6 +119,9 @@ interface Session
    * Returns true if the user is anonymous (i.e. not a user who has logged in). Otherwise, returns false.
    *
    * @return bool
+   *
+   * @since 1.0.0
+   * @api
    */
   public function isAnonymous(): bool;
 
@@ -105,6 +132,9 @@ interface Session
    * @param int $usrId The ID the user.
    *
    * @return void
+   *
+   * @since 1.0.0
+   * @api
    */
   public function login(int $usrId): void;
 
@@ -113,6 +143,9 @@ interface Session
    * Terminates the current session.
    *
    * @return void
+   *
+   * @since 1.0.0
+   * @api
    */
   public function logout(): void;
 
@@ -128,14 +161,20 @@ interface Session
    *                          of the session.
    *
    * @return bool
+   *
+   * @since 1.0.0
+   * @api
    */
   public function putNamedSection(string $name, ?array $value): bool;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Saves the current state op the session.
+   * Saves the current state of the session.
    *
    * @return void
+   *
+   * @since 1.0.0
+   * @api
    */
   public function save(): void;
 
@@ -146,6 +185,9 @@ interface Session
    * @param int $lanId The ID of the new language.
    *
    * @return void
+   *
+   * @since 1.0.0
+   * @api
    */
   public function setLanId(int $lanId): void;
 
@@ -154,6 +196,9 @@ interface Session
    * Creates a session or resumes the current session based on the session cookie.
    *
    * @return void
+   *
+   * @since 1.0.0
+   * @api
    */
   public function start(): void;
 
