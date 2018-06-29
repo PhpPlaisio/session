@@ -9,30 +9,19 @@ interface Session
 {
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Exclusive lock mode for named section of a session.
+   * Shared lock mode for named sections of a session.
    */
-  const NAMED_LOCKED = 1;
+  const SECTION_SHARED = 1;
 
   /**
-   * Shared lock mode for named section of a session.
+   * Exclusive lock mode for named sections of a session.
    */
-  const NAMED_SHARED = 2;
+  const SECTION_EXCLUSIVE = 2;
 
   /**
-   * First come, first serve mode for named section of a session.
+   * Read-Only mode for named sections of a session.
    */
-  const NAMED_FIRST_COME_FIRST_SERVED = 3;
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
-   * Deletes a named section of the session.
-   *
-   * @param string $name The name of the named section.
-   *
-   * @since 1.0.0
-   * @api
-   */
-  public function delNamedSession(string $name): void;
+  const SECTION_READ_ONLY = 3;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -58,17 +47,20 @@ interface Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Gets a named section of the session. If such named section does not yet exists an empty array is returned.
+   * Returns a reference to the data of a named section of the session.
+   *
+   * If the named section does not yet exists a reference to null is returned. Only named sections opened in shared
+   * and exclusive mode will be saved by @see save.
    *
    * @param string $name The name of the named section.
-   * @param int    $mode The locke mode.
+   * @param int    $mode The mode for getting the named section.
    *
    * @return mixed
    *
    * @since 1.0.0
    * @api
    */
-  public function getNamedSection(string $name, int $mode);
+  public function &getNamedSection(string $name, int $mode);
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -148,39 +140,6 @@ interface Session
    * @api
    */
   public function logout(): void;
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
-   * Saves a named section of the session.
-   *
-   * Normally will return true. However, in NAMED_FIRST_COME_FIRST_SERVED mode will return false when the named section
-   * of the session could not be updated (due to some other request has updated the named section before).
-   *
-   * @param string $name  The name of the named section.
-   * @param mixed  $value The value of the named section of the session. A null value will delete the named section
-   *                      of the session.
-   *
-   * @return bool
-   *
-   * @since 1.0.0
-   * @api
-   */
-  public function saveNamedSection(string $name, $value): bool;
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
-   * Stores a named section of the session.
-   *
-   * This method only stores the named section in memory for later retrieval during the same page request. For saving
-   * the named section between page requests use @see saveNamedSection.
-   *
-   * @param string $name  The name of the named section.
-   * @param mixed  $value The value of the named section of the session.
-   *
-   * @since 1.0.0
-   * @api
-   */
-   public function storeNamedSection(string $name, $value): void;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
