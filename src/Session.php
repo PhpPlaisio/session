@@ -63,12 +63,12 @@ interface Session
    * @param string $name The name of the named section.
    * @param int    $mode The locke mode.
    *
-   * @return array
+   * @return mixed
    *
    * @since 1.0.0
    * @api
    */
-  public function getNamedSection(string $name, int $mode): array;
+  public function getNamedSection(string $name, int $mode);
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -151,21 +151,36 @@ interface Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Stores a named section of the session.
+   * Saves a named section of the session.
    *
    * Normally will return true. However, in NAMED_FIRST_COME_FIRST_SERVED mode will return false when the named section
    * of the session could not be updated (due to some other request has updated the named section before).
    *
-   * @param string     $name  The name of the named section.
-   * @param array|null $value The value of the named section of the session. A null value will delete the named section
-   *                          of the session.
+   * @param string $name  The name of the named section.
+   * @param mixed  $value The value of the named section of the session. A null value will delete the named section
+   *                      of the session.
    *
    * @return bool
    *
    * @since 1.0.0
    * @api
    */
-  public function putNamedSection(string $name, ?array $value): bool;
+  public function saveNamedSection(string $name, $value): bool;
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * Stores a named section of the session.
+   *
+   * This method only stores the named section in memory for later retrieval during the same page request. For saving
+   * the named section between page requests use @see saveNamedSection.
+   *
+   * @param string $name  The name of the named section.
+   * @param mixed  $value The value of the named section of the session.
+   *
+   * @since 1.0.0
+   * @api
+   */
+   public function storeNamedSection(string $name, $value): void;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
