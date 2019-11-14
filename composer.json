@@ -1,18 +1,17 @@
 {
-  "name": "setbased/abc-session",
-  "description": "ABC-Framework: Session",
+  "name": "plaisio/session",
+  "description": "PhpPlaisio: Session",
   "keywords": [
-    "ABC-Framework",
+    "PhpPlaisio",
     "Session"
   ],
-  "type": "library",
   "license": "MIT",
   "require": {
     "php": ">=7.1.0"
   },
   "autoload": {
     "psr-4": {
-      "SetBased\\Abc\\Session\\": "src/"
+      "Plaisio\\Session\\": "src/"
     }
   }
 }

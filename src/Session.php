@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace SetBased\Abc\Session;
+namespace Plaisio\Session;
 
 /**
  * Interface for classes for session handling.
