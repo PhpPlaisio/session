@@ -26,6 +26,14 @@ interface Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
+   * Destroys all sessions of a user.
+   *
+   * @param int $usrId The ID of the user.
+   */
+  public static function destroyAllSessionsOfUser(int $usrId): void;
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
    * Destroys all other sessions of the current user.
    */
   public function destroyOtherSessions(): void;
