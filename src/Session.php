@@ -26,11 +26,9 @@ interface Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Destroys sessions of the current user.
-   *
-   * @param bool $current If true all session will be destroyed. Otherwise, all other sessions will be destroyed.
+   * Destroys all other sessions of the current user.
    */
-  public function destroySessions(bool $current = false): void;
+  public function destroyOtherSessions(): void;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
