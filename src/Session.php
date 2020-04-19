@@ -36,7 +36,7 @@ interface Session
   /**
    * Destroys all other sessions of the current user.
    */
-  public function destroyOtherSessions(): void;
+  public function destroyOtherSessionsOfUser(): void;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
