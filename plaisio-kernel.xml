@@ -1,0 +1,9 @@
+<kernel>
+    <properties>
+        <property>
+            <type>\Plaisio\Session\Session</type>
+            <name>session</name>
+            <description>The helper object for session management.</description>
+        </property>
+    </properties>
+</kernel>
