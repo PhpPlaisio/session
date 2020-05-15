@@ -5,6 +5,10 @@ namespace Plaisio\Session;
 
 /**
  * Interface for classes for session handling.
+ *
+ * @property-read int $proId The ID of the profile of the user of the current session.
+ * @property-read int $sesId The ID of the current session.
+ * @property-read int $usrId The ID of the user of the current session.
  */
 interface Session
 {
@@ -26,17 +30,23 @@ interface Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Destroys all sessions of a user.
-   *
-   * @param int $usrId The ID of the user.
+   * Destroys all sessions of the current user.
    */
-  public static function destroyAllSessionsOfUser(int $usrId): void;
+  public function destroyAllSessions(): void;
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * Destroys all sessions of an other user.
+   *
+   * @param int $usrId The ID of the other user.
+   */
+  public function destroyAllSessionsOfUser(int $usrId): void;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Destroys all other sessions of the current user.
    */
-  public function destroyOtherSessionsOfUser(): void;
+  public function destroyOtherSessions(): void;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -52,6 +62,9 @@ interface Session
   //--------------------------------------------------------------------------------------------------------------------
   /**
    * Returns the ID of preferred language of the user of the current session.
+   *
+   * The method SHOULD only be used to set the language of the Babel object. Use the Babel object for getting the ID
+   * of the language.
    *
    * @return int
    *
@@ -80,28 +93,6 @@ interface Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Returns the ID of the profile of the user of the current session.
-   *
-   * @return int
-   *
-   * @since 1.0.0
-   * @api
-   */
-  public function getProId(): int;
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
-   * Returns the ID of the current session.
-   *
-   * @return int|null
-   *
-   * @since 1.0.0
-   * @api
-   */
-  public function getSesId(): ?int;
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
    * Returns the session token.
    *
    * @return string
@@ -110,17 +101,6 @@ interface Session
    * @api
    */
   public function getSessionToken(): string;
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
-   * Returns the ID of the user of the current session.
-   *
-   * @return int
-   *
-   * @since 1.0.0
-   * @api
-   */
-  public function getUsrId(): int;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -135,7 +115,7 @@ interface Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Updates the session that an user has successfully logged in.
+   * Updates the session that a user has successfully logged in.
    *
    * @param int $usrId The ID the user.
    *
