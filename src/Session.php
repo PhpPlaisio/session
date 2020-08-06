@@ -61,6 +61,14 @@ interface Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
+   * Returns true if and only if there are one or more flash messages saved in the current sessions.
+   *
+   * @return bool
+   */
+  public function getHasFlashMessage(): bool;
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
    * Returns the ID of preferred language of the user of the current session.
    *
    * The method SHOULD only be used to set the language of the Babel object. Use the Babel object for getting the ID
@@ -147,6 +155,16 @@ interface Session
    * @api
    */
   public function save(): void;
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * Sets whether the current session has one or more flash messages.
+   *
+   * @param bool $hasFlashMessage If and only if true the current session has on or more flash messages.
+   *
+   * @return void
+   */
+  public function setHasFlashMessage(bool $hasFlashMessage): void;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
